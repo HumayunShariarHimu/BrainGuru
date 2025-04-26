@@ -1,0 +1,42 @@
++------------------------------------------+
+|                                          |
+|    Signal Generator (Arduino/ESP32)      |
+|         |                                |
+|    Digital Signal                         |
+|         |                                |
+|  +------------+                          |
+|  | MCP4921    |  --  DAC Conversion      |
+|  | (DAC Chip) |                          |
+|  +------------+                          |
+|         |                                |
+|   Analog Signal                           |
+|         |                                |
+|   +-------------+                        |
+|   | LM741       |  --  Signal Amplification|
+|   | (Op-Amp)    |                        |
+|   +-------------+                        |
+|         |                                |
+|   Amplified Signal                       |
+|         |                                |
+|   +----------------+                      |
+|   | TDA7294 / LM3886 |  --  Power Amplification|
+|   | (Power Amp)     |                      |
+|   +----------------+                      |
+|         |                                |
+|   Amplified Signal                       |
+|         |                                |
+|   +----------------+                      |
+|   | MOSFET (IRF540N) |  -- Switching Circuit|
+|   +----------------+                      |
+|         |                                |
+|   +----------------+                      |
+|   | Capacitor Bank |  -- Power Storage   |
+|   | (100μF, 400V)   |                      |
+|   +----------------+                      |
+|         |                                |
+|   +-----------------+                     |
+|   | Magnetic Coil    |  -- Output Magnetic Field |
+|   +-----------------+                     |
+|         |                                |
+|   High Voltage Power Supply (24V-300V DC)|
++------------------------------------------+
