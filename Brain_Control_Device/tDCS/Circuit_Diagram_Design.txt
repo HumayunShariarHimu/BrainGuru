@@ -1,0 +1,44 @@
++-------------------------------------------------+
+|                 Power Supply                    |
+| (9V Battery or DC Voltage Source)               |
++-------------------------------------------------+
+                |  
+                |
+                V
+        +-------------------+
+        | Constant Current   |          (Op-Amp, Transistor Circuit)
+        | Source (CCS)       |
+        +-------------------+
+                |
+                |---+-------------------+
+                    |                   |
+                    V                   V
+            +-------------------+   +-------------------+
+            | Electrodes (Ag/AgCl)|   | Current Limiting  |
+            |  (Anode & Cathode)  |---| Resistor (10kΩ)    |
+            +-------------------+   +-------------------+
+                |                   
+                |                   
+                V
+          +------------------+
+          |      Switch      |
+          |  (Push Button)   |
+          +------------------+
+                |
+                |
+                V
+        +-------------------+
+        | Microcontroller    | (Optional: Arduino/ESP32 for control)
+        | (Control Parameters|
+        |   - Current, Time) |
+        +-------------------+
+                |
+                V
+           +-------------------+
+           | Output to Electrodes|
+           +-------------------+
+                |
+                V
+        +-------------------+
+        | User Brain Area    | (Stimulation Target)
+        +-------------------+
