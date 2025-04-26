@@ -2,7 +2,7 @@
 
 ## সূচী
 - [Basic Mind Control](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Basic_Mind_Control.md)
-- [মানসিক সচেতনতা এবং মননশীলতা (Mindfulness & Awareness)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Mindfulness_and_Awareness.md)
+- [মানসিক সচেতনতা এবং মননশীলতা (Mindfulness & Awareness)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Mindfulness_%26_Awareness.md)
 - [চিন্তা পুনর্গঠন (Cognitive Restructuring)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Cognitive_Restructuring.md)
 - [মস্তিষ্কের পরিবেশ নিয়ন্ত্রণ (Brain Environment Control)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Brain_Environment_Control.md)
 - [চেতনা পুনর্গঠন (Consciousness Engineering)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Consciousness_Engineering.md)
@@ -17,7 +17,7 @@
 - **নিয়মিত আত্মপর্যবেক্ষণ**: দিনে ২-৩ বার নিজেকে জিজ্ঞাসা করা, "আমি এখন কী ভাবছি?"
 - **নিজের ইচ্ছাশক্তি বাড়ানো**: ছোট ছোট কাজ দিয়ে ইচ্ছাশক্তি অনুশীলন করা।
 
-# [মানসিক সচেতনতা এবং মননশীলতা (Mindfulness & Awareness)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Mindfulness_and_Awareness.md)
+# [মানসিক সচেতনতা এবং মননশীলতা (Mindfulness & Awareness)](https://github.com/HumayunShariarHimu/BrainGuru/blob/main/Mind_Control_Guide/Mindfulness_%26_Awareness.md)
 
 - **নিজেকে পর্যবেক্ষণ করা**: মস্তিষ্কে কী ভাবনা আসছে, তা দূর থেকে পর্যবেক্ষণ করো।
 - **Mindfulness Meditation**: নিয়মিত ধ্যান করে চিন্তার প্রবাহ লক্ষ্য করা ও অপ্রয়োজনীয় ভাবনা সরিয়ে দেওয়া।
