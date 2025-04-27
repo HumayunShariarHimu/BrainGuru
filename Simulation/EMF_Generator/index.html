@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>EMF Generator</title>
+<style>
+  body {
+    background: black;
+    color: lime;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 50px;
+  }
+  button {
+    background: lime;
+    color: black;
+    font-size: 22px;
+    padding: 20px 50px;
+    margin: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Hyper Extreme EMF Generator</h1>
+<button onclick="startHyperExtreme()">Start</button>
+<button onclick="stopHyperExtreme()">Stop</button>
+
+<canvas id="crazyCanvas" width="500" height="500" style="display:none;"></canvas>
+
+<script>
+let vibrationInterval, networkInterval, websocketInterval, gpsWatcher, canvasInterval, sensorInterval, flashlightInterval;
+let audioCtx, oscillators = [], subOscillator;
+let calculationWorker;
+let videoStream;
+
+async function startHyperExtreme() {
+  try {
+    // Vibration (High intensity)
+    if (navigator.vibrate) {
+      vibrationInterval = setInterval(() => {
+        navigator.vibrate([200, 100, 300, 100, 400, 50, 100, 50]);
+      }, 400);
+    }
+
+    // High Frequency Audio
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const freqs = [18000, 19000, 20000, 21000];
+    freqs.forEach(f => {
+      const osc = audioCtx.createOscillator();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+      osc.connect(audioCtx.destination);
+      osc.start();
+      oscillators.push(osc);
+    });
+
+    // SubSonic Vibration Sound
+    subOscillator = audioCtx.createOscillator();
+    subOscillator.type = 'sine';
+    subOscillator.frequency.setValueAtTime(10, audioCtx.currentTime); // 10Hz!
+    subOscillator.connect(audioCtx.destination);
+    subOscillator.start();
+
+    // Network Traffic
+    networkInterval = setInterval(() => {
+      fetch('https://example.com', {mode:'no-cors'}).catch(()=>{});
+      fetch('https://google.com', {mode:'no-cors'}).catch(()=>{});
+    }, 80);
+
+    // WebSocket Spamming
+    websocketInterval = setInterval(() => {
+      try {
+        let ws = new WebSocket('wss://echo.websocket.org');
+        ws.onopen = () => ws.send("Ping Extreme!");
+        ws.onerror = () => {};
+      } catch (e) {}
+    }, 250);
+
+    // GPS Constant Watch
+    if (navigator.geolocation) {
+      gpsWatcher = navigator.geolocation.watchPosition(
+        pos => console.log('GPS Extreme:', pos.coords.latitude, pos.coords.longitude),
+        err => console.error('GPS error:', err),
+        { enableHighAccuracy: true, maximumAge: 0, timeout: 5000 }
+      );
+    }
+
+    // Canvas GPU Overdrive
+    const canvas = document.getElementById('crazyCanvas');
+    canvas.style.display = 'block';
+    const ctx = canvas.getContext('2d');
+    canvasInterval = setInterval(() => {
+      ctx.fillStyle = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
+      ctx.fillRect(Math.random()*500, Math.random()*500, Math.random()*150, Math.random()*150);
+    }, 30);
+
+    // Flashlight Strobe
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+      const track = videoStream.getVideoTracks()[0];
+      const imageCapture = new ImageCapture(track);
+      flashlightInterval = setInterval(() => {
+        track.applyConstraints({advanced: [{torch: true}]});
+        setTimeout(() => {
+          track.applyConstraints({advanced: [{torch: false}]});
+        }, 100);
+      }, 300);
+    }
+
+    // Sensor API (Accelerometer, Gyroscope, Magnetometer, Proximity, Light Sensor)
+    if ('DeviceMotionEvent' in window) {
+      window.addEventListener('devicemotion', event => {
+        console.log('Accel:', event.acceleration);
+      });
+    }
+    if ('DeviceOrientationEvent' in window) {
+      window.addEventListener('deviceorientation', event => {
+        console.log('Gyro:', event.alpha, event.beta, event.gamma);
+      });
+    }
+    if ('ondeviceproximity' in window) {
+      window.addEventListener('deviceproximity', event => {
+        console.log('Proximity:', event.value);
+      });
+    }
+    if ('ondevicelight' in window) {
+      window.addEventListener('devicelight', event => {
+        console.log('Light:', event.value);
+      });
+    }
+
+    alert("Hyper Extreme EMF Generation Started!");
+
+  } catch (e) {
+    console.error('Hyper Extreme EMF Error:', e);
+  }
+}
+
+function stopHyperExtreme() {
+  if (vibrationInterval) clearInterval(vibrationInterval);
+  if (networkInterval) clearInterval(networkInterval);
+  if (websocketInterval) clearInterval(websocketInterval);
+  if (gpsWatcher) navigator.geolocation.clearWatch(gpsWatcher);
+  if (oscillators.length > 0) {
+    oscillators.forEach(osc => {
+      osc.stop();
+      osc.disconnect();
+    });
+  }
+  if (audioCtx) audioCtx.close();
+  if (subOscillator) subOscillator.stop();
+  if (canvasInterval) clearInterval(canvasInterval);
+  if (flashlightInterval) clearInterval(flashlightInterval);
+  if (videoStream) {
+    videoStream.getTracks().forEach(track => track.stop());
+  }
+
+  alert("Hyper Extreme EMF Generation Stopped!");
+}
+</script>
+
+</body>
+</html>
