@@ -1,6 +1,6 @@
 # Psychopharmacology
 
-- [Medicine - Targeted Mental Stabilizer](/Medicine.md)  
+- [Medicine - Targeted Mental Stabilizer](./Medicine.md)  
   - মস্তিষ্কের রাসায়নিক ভারসাম্য পুনরুদ্ধার করে মানসিক স্বাস্থ্যের স্থিতি বজায় রাখে।  
 
 - [Psychedelic - Transformative Consciousness Expander](/Psychedelic.md)  
