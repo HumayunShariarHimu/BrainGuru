@@ -1,0 +1,17 @@
+EEG Electrodes (placed on scalp) 
+    |  
+    +--> Op-Amp (Signal Amplification) 
+           |  
+           +--> Signal Conditioning Circuit (filtering & amplification) 
+                  |  
+                  +--> Microcontroller (Arduino/STM32) 
+                         |  
+                         +--> ADC (Analog to Digital Conversion) 
+                                |  
+                                +--> Signal Processing (data analysis) 
+                                       |  
+                                       +--> Output Device (LED, LCD for feedback display) 
+                                       |  
+                                       +--> Wireless Communication (optional for remote monitoring) 
+    |  
+    +--> Power Supply (5V)
