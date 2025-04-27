@@ -1,0 +1,15 @@
+- Battery (3.7V Li-Ion)
+    |
+    +--> Voltage Regulator (5V Output - AMS1117)
+           |
+           +--> Microcontroller (STM32 or Arduino Nano)
+                  |
+                  +--> PWM Output Pins
+                         |
+                         +--> Low-pass Filter (optional for smoothing PWM)
+                                |
+                                +--> LM334 Current Source Circuit
+                                       |
+                                       +--> Isolation (Optocoupler)
+                                              |
+                                              +--> DBS Leads (Platinum electrodes)
