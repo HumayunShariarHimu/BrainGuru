@@ -1,5 +1,5 @@
 # Brain Control Device
-  - [TMS](./Brain_Control_Device/TMS)  
+  - [TMS](/Brain_Control_Device/TMS)  
   - [tDCS](./Brain_Control_Device/tDCS)  
   - [FUS](./Brain_Control_Device/FUS)  
   - [DBS](./Brain_Control_Device/DBS)  
