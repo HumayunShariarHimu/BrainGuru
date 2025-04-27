@@ -1,0 +1,7 @@
+EEG Electrodes (Scalp) --> Op-Amp (Signal Amplification) --> Signal Conditioning Circuit (Filtering & Amplification)
+    |                                         |
+    v                                         v
+Microcontroller (Arduino / STM32) --> ADC (Analog to Digital Conversion) --> Signal Processing (Data Analysis)
+    |                                         |
+    v                                         v
+   Output Device (LED/LCD) --> Wireless Communication Module (Optional) --> Power Supply (5V)
