@@ -1,0 +1,133 @@
+body {
+	height: 100%;
+    background-color: black;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 10px;
+
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rainbow-text{
+    font-size: 18px;
+    text-align: center;
+} 
+.rainbow-text .char { 
+   color: hsl(
+    calc(360deg * var(--char-percent)
+), 
+65%,
+90%
+);}
+.rainbow-text.animated .char {
+  animation: rainbow-colors 2s linear infinite;
+  animation-delay: calc(-2s * var(--char-percent));
+}
+
+@keyframes rainbow-colors {
+  0% { color: hsl(0turn, 90%, 65%); }
+  25% { color: hsl(.25turn, 90%, 65%); }
+  50% { color: hsl(.5turn, 90%, 65%); }
+  75% { color: hsl(.75turn, 90%, 65%); }
+  100% { color: hsl(1turn, 90%, 65%); }
+}
+.splitting .char {
+    --char-percent: calc(var(--char-index) / var(--char-total));
+    --char-offset: calc(var(--char-index) - var(--char-center));
+    --distance: calc( (var(--char-offset) * var(--char-offset)) / var(--char-center) );
+    --distance-sine: calc(var(--char-offset) / var(--char-center));
+    --distance-percent: calc((var(--distance) / var(--char-center)));
+}
+.splitting .char {
+    position: relative;
+}
+
+
+.rainbow-text p{
+
+  background-image: linear-gradient(-90deg, #ff0000, rgb(166,246,86), rgb(85,246,246), rgb(166, 85, 246), rgb(246,85,85));
+  background-size: 200%;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  animation: animate 2.5s linear infinite;
+  font-size: 20px;
+  padding: 12px;
+  animation-direction: reverse;
+
+}
+
+@keyframes animate{
+  0%{
+    background-position: 0%;
+  }
+  100%{
+    background-position:  200%;
+  }
+}
+
+a:link, a:visited {
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover, a:active, button:hover, button:active {background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+  animation:slidebg 2s linear infinite;
+  animation-duration: alternate;
+}
+
+@keyframes slidebg {
+  to {
+    background-position:20vw;
+  }
+}
+
+button{
+  background-color: #ffffff;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+input{
+  background-color: #ffffff;
+  border: 5px solid blue;
+  color: rgb(0, 0, 0);
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 8px 8px rgba(0, 255, 191, 0.568);
+}
+
+input:hover{
+  color: rgb(255, 0, 0);
+  border: 5px solid rgb(255, 0, 0);
+  transition: color 1s;
+}
