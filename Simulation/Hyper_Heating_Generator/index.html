@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hyper Heating Generator</title>
+</head>
+<body style="background:black; color:lime; text-align:center;">
+
+  <h1>Hyper Heating Generator</h1>
+  <button onclick="startHyperHeating()">Start Heating</button>
+
+  <script>
+    async function startHyperHeating() {
+      alert("Allow all permissions when asked!");
+
+      // Vibrate continuously
+      setInterval(() => {
+        navigator.vibrate([500, 200, 500, 200]);
+      }, 1500);
+
+      // High Frequency Audio
+      const context = new (window.AudioContext || window.webkitAudioContext)();
+      const oscillator = context.createOscillator();
+      oscillator.type = 'square';
+      oscillator.frequency.setValueAtTime(18000, context.currentTime); // 18 kHz
+      oscillator.connect(context.destination);
+      oscillator.start();
+
+      // Heavy JavaScript CPU load
+      function heavyLoad() {
+        let x = 0;
+        for (let i = 0; i < 1e7; i++) {
+          x += Math.sqrt(i) * Math.random();
+        }
+        requestAnimationFrame(heavyLoad);
+      }
+      heavyLoad();
+
+      // Constant GPS Location access
+      if ("geolocation" in navigator) {
+        setInterval(() => {
+          navigator.geolocation.getCurrentPosition(() => {}, () => {});
+        }, 3000);
+      }
+
+      // Camera Access
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then((stream) => {
+            const video = document.createElement('video');
+            video.srcObject = stream;
+            video.play();
+          })
+          .catch((err) => console.error("Camera error:", err));
+      }
+
+      // WiFi & Bluetooth scanning via navigator API trigger
+      if ('bluetooth' in navigator) {
+        setInterval(async () => {
+          try {
+            await navigator.bluetooth.requestDevice({ acceptAllDevices: true });
+          } catch (e) {}
+        }, 10000);
+      }
+
+      // Dummy network requests
+      setInterval(() => {
+        fetch('https://jsonplaceholder.typicode.com/posts/1')
+          .then(response => response.json())
+          .then(data => console.log("Network ping"))
+          .catch(err => {});
+      }, 2000);
+
+      // Attempt to set screen brightness (tricky part)
+      try {
+        if ('wakeLock' in navigator) {
+          const lock = await navigator.wakeLock.request('screen');
+        }
+      } catch (err) {
+        console.error("WakeLock error:", err);
+      }
+    }
+  </script>
+
+</body>
+</html>
