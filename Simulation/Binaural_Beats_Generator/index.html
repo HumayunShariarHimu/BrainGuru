@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Binaural Beat Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./binaural_beats_generator_style.css" type="text/css">
+<link rel="stylesheet" href="./sironam_box_style.css" type="text/css">
+</head>
+<body>
+<button class="btn btn-gradient-border btn-glow">Binaural Beat Generator</button>
+<!-- partial:index.partial.html -->
+<div id="app">
+<center>
+<b>
+<form>
+<div class="rainbow-text"><p>
+    <div class="binaural-freq-wrapper">
+    	<p id="freq2label">Left Ear<br />Frequency (HZ)</p>
+      <input type="text" id="freq2" name="freq2" v-model="freq2" class="input--frequency"/>
+    </div>
+    <div class="binaural-freq-wrapper">
+      <input type="text" id="freq" name="freq" v-model="freq" class="input--frequency" />
+      <p>Right Ear<br />Frequency (HZ)</p>
+    </div>
+    <div class="generator-buttons">
+      <button type="button" @click="start()" class="beginTuning generatorButton">Play</button>
+      <button type="button" @click="stop()" class="stopTuning generatorButton">Stop</button>
+      <br>
+      <br><br>
+</b>
+</center>
+    </div>
+</p>
+  </form>
+</div>
+<!-- partial -->
+  <script src='./binaural_beat_one.js'></script><script  src="./binaural_beat_two.js"></script>
+</body>
+</html>
