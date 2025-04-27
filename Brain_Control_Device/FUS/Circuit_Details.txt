@@ -1,0 +1,60 @@
+Focused Ultrasound Neuromodulation (FUS) Circuit Diagram with Component Names and Connections
+
+1. **Signal Input (Controller)**
+   - Microcontroller (e.g., Arduino, ESP32)
+   - Purpose: Receives input from the user and controls the system.
+
+2. **Frequency Generator**
+   - Components: Oscillator, Signal Generator (e.g., XR2206 or similar IC)
+   - Purpose: Generates the high-frequency electrical signal (e.g., 1-10 MHz) for ultrasound transmission.
+
+3. **Signal Amplification**
+   - Components: Operational Amplifier (e.g., LM386, or specialized high-gain op-amps)
+   - Purpose: Increases the signal strength to a suitable level for the power amplifier.
+
+4. **Power Amplifier**
+   - Components: Power Amplifier IC (e.g., TDA2030 or other power amplifiers)
+   - Purpose: Amplifies the signal to a high power level to drive the ultrasound transducer.
+
+5. **Transducer (Piezoelectric Element)**
+   - Purpose: Converts the amplified electrical signal into mechanical ultrasound waves and directs them to the brain area.
+   - Connection: Connected to the output of the power amplifier.
+
+6. **Cooling System**
+   - Components: Cooling Fan, Heat Sink, Peltier Coolers
+   - Purpose: Prevents the system from overheating and ensures safe operation.
+
+7. **Control Unit**
+   - Microcontroller (e.g., Arduino, ESP32)
+   - User Interface: Touchscreen, Buttons (for user input)
+   - Purpose: Manages the operation of the entire system, monitors safety parameters, and adjusts settings.
+
+**Connection Diagram:**
+
+1. **Signal Input (Controller)**
+   - Connects to the **Frequency Generator** to control the signal frequency.
+   
+2. **Frequency Generator**
+   - Output of the Frequency Generator is connected to the **Signal Amplifier**.
+
+3. **Signal Amplification**
+   - Amplified signal is sent to the **Power Amplifier**.
+
+4. **Power Amplifier**
+   - Drives the **Transducer (Piezoelectric Element)** with a high-power signal to generate ultrasound waves.
+
+5. **Transducer (Piezoelectric Element)**
+   - Focuses the ultrasound energy on the target area (brain region).
+   
+6. **Cooling System**
+   - Connected to the main system for heat dissipation. It cools the transducer and power amplifier to prevent overheating.
+
+7. **Control Unit**
+   - Controls the entire system and provides user feedback. The microcontroller manages the input signals and safety checks.
+
+**Safety Considerations:**
+- **Temperature Control:** The cooling system maintains safe temperatures.
+- **Signal Power Control:** Prevents excessive power that could damage tissue.
+- **Testing:** Regular clinical testing and calibration are needed to ensure safety.
+
+Note: This description is for conceptual purposes. The actual hardware design would require detailed specifications and safety measures.
