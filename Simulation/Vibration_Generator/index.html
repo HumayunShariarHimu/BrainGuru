@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vibration Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #1d2671, #c33764);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4b2b;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff416c;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vibration Generator</h1>
+
+    <button onclick="startContinuousVibration()">Start Continuous Vibration</button>
+    <button onclick="stopVibration()">Stop Vibration</button>
+
+    <script>
+        let vibrationInterval;
+
+        function startContinuousVibration() {
+            if ("vibrate" in navigator) {
+                // Vibrate every 1 second continuously
+                navigator.vibrate([1000]);
+                vibrationInterval = setInterval(() => {
+                    navigator.vibrate([1000]);
+                }, 1000); // Repeat every 1 second
+                alert("Continuous Vibration Started!");
+            } else {
+                alert("Vibration API not supported on this device.");
+            }
+        }
+
+        function stopVibration() {
+            if ("vibrate" in navigator) {
+                navigator.vibrate(0);
+                clearInterval(vibrationInterval);
+                alert("Vibration Stopped!");
+            }
+        }
+    </script>
+
+</body>
+</html>
