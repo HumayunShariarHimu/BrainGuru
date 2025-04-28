@@ -9,3 +9,6 @@
 
 # Brainwave Audio Vibration Generator
 **Access Link:** [Click Here For Brainwave Audio Vibration Generator](https://humayunshariarhimu.github.io/BrainGuru/Simulation/Brainwave_Audio_Vibration_Generator)
+
+# Vibration Generator
+**Access Link:** [Click Here For Vibration Generator](https://humayunshariarhimu.github.io/BrainGuru/Simulation/Vibration_Generator)
