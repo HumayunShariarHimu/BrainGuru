@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brainwave Audio Vibration Generator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #d1c4e9, #b2ebf2);
+      text-align: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      display: inline-block;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    input[type=number] {
+      width: 100px;
+      padding: 8px;
+      font-size: 18px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #6200ea;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+    .preset-buttons {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Brainwave Audio Vibration Generator</h1>
+
+  <div>
+    <input type="number" id="frequency" min="1" max="20000" value="440">
+    <button onclick="startSingleTone()">Start</button>
+    <button onclick="stopSound()">Stop</button>
+  </div>
+
+  <h3>Presets</h3>
+  <div class="preset-buttons">
+    <button onclick="startPreset(3)">Sleep (3 Hz)</button>
+    <button onclick="startPreset(8)">Relaxation (8 Hz)</button>
+    <button onclick="startPreset(14)">Focus (14 Hz)</button>
+    <button onclick="startPreset(40)">Energy Boost (40 Hz)</button>
+  </div>
+
+  <h3>Binaural Beats Mode</h3>
+  <div>
+    <input type="number" id="binauralBase" min="20" max="20000" value="200"> Base Frequency
+    <input type="number" id="binauralDifference" min="1" max="40" value="8"> Beat Difference
+    <button onclick="startBinaural()">Start Binaural</button>
+  </div>
+</div>
+
+<script>
+  let audioCtx;
+  let oscillatorLeft;
+  let oscillatorRight;
+  let oscillatorSingle;
+  let merger;
+
+  function startSingleTone() {
+    const freq = parseFloat(document.getElementById('frequency').value);
+
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    stopSound();
+
+    oscillatorSingle = audioCtx.createOscillator();
+    oscillatorSingle.type = 'sine';
+    oscillatorSingle.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    oscillatorSingle.connect(audioCtx.destination);
+    oscillatorSingle.start();
+  }
+
+  function startPreset(targetFreq) {
+    const baseFreq = 200; // Base sound
+    const beatDifference = targetFreq; // Beat frequency according to brainwave
+
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    stopSound();
+
+    oscillatorLeft = audioCtx.createOscillator();
+    oscillatorRight = audioCtx.createOscillator();
+    merger = audioCtx.createChannelMerger(2);
+
+    oscillatorLeft.type = 'sine';
+    oscillatorRight.type = 'sine';
+
+    oscillatorLeft.frequency.setValueAtTime(baseFreq - beatDifference/2, audioCtx.currentTime);
+    oscillatorRight.frequency.setValueAtTime(baseFreq + beatDifference/2, audioCtx.currentTime);
+
+    oscillatorLeft.connect(merger, 0, 0); // left channel
+    oscillatorRight.connect(merger, 0, 1); // right channel
+
+    merger.connect(audioCtx.destination);
+
+    oscillatorLeft.start();
+    oscillatorRight.start();
+  }
+
+  function startBinaural() {
+    const baseFreq = parseFloat(document.getElementById('binauralBase').value);
+    const beatDiff = parseFloat(document.getElementById('binauralDifference').value);
+
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    stopSound();
+
+    oscillatorLeft = audioCtx.createOscillator();
+    oscillatorRight = audioCtx.createOscillator();
+    merger = audioCtx.createChannelMerger(2);
+
+    oscillatorLeft.type = 'sine';
+    oscillatorRight.type = 'sine';
+
+    oscillatorLeft.frequency.setValueAtTime(baseFreq, audioCtx.currentTime);
+    oscillatorRight.frequency.setValueAtTime(baseFreq + beatDiff, audioCtx.currentTime);
+
+    oscillatorLeft.connect(merger, 0, 0);
+    oscillatorRight.connect(merger, 0, 1);
+
+    merger.connect(audioCtx.destination);
+
+    oscillatorLeft.start();
+    oscillatorRight.start();
+  }
+
+  function stopSound() {
+    if (oscillatorSingle) {
+      oscillatorSingle.stop();
+      oscillatorSingle.disconnect();
+      oscillatorSingle = null;
+    }
+    if (oscillatorLeft) {
+      oscillatorLeft.stop();
+      oscillatorLeft.disconnect();
+      oscillatorLeft = null;
+    }
+    if (oscillatorRight) {
+      oscillatorRight.stop();
+      oscillatorRight.disconnect();
+      oscillatorRight = null;
+    }
+    if (merger) {
+      merger.disconnect();
+      merger = null;
+    }
+  }
+</script>
+
+</body>
+</html>
