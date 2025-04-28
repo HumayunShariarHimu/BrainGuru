@@ -6,3 +6,6 @@
 
 # Hyper Heating Generator
 **Access Link:** [Click Here For Hyper Heating Generator](https://humayunshariarhimu.github.io/BrainGuru/Simulation/Hyper_Heating_Generator)
+
+# Brainwave Audio Vibration Generator
+**Access Link:** [Click Here For Brainwave Audio Vibration Generator](https://humayunshariarhimu.github.io/BrainGuru/Simulation/Brainwave_Audio_Vibration_Generator)
